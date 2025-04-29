@@ -64,8 +64,13 @@ public class ControllerMahasiswa
                 JOptionPane.showMessageDialog(null, "Data Tidak Boleh Kosong");
             }
         }
-
-    public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+        public void delete(){
+            if (!frame.getTxtID().getText().trim().isEmpty()){
+                int id = Integer.parseInt(frame.getTxtID().getText());
+                implMahasiswa.delete(id);
+                JOptionPane.showMessageDialog(null, "Hapus data sukses");
+            } else {
+                JOptionPane.showMessageDialog(frame, "Pilih data yang akan dihapus");
+            }
+        }
     }

@@ -300,8 +300,10 @@ public class FormMahasiswa extends javax.swing.JFrame
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void buttonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteActionPerformed
-
         // TODO add your handling code here:
+        cbt.delete();
+        cbt.isiTable();
+        cbt.reset();
     }//GEN-LAST:event_buttonDeleteActionPerformed
 
     private void buttonResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonResetActionPerformed

@@ -14,7 +14,6 @@ import Model.Mahasiswa;
 import DAOInterface.IMahasiswa;
 import java.util.ArrayList;
 import java.sql.SQLException;
-import com.mysql.cj.jdbc.MysqlDataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,6 +27,7 @@ public class DAOMahasiswa implements IMahasiswa
         Connection connection;
         final String insert = "INSERT INTO tblmahasiswa (nim, nama, jk, alamat) VALUES (?, ?, ?, ?);";
         final String select = "SELECT * FROM tblmahasiswa;";
+        final String delete = "DELETE FROM tblmahasiswa WHERE id=? ;";
         
         public DAOMahasiswa(){
             connection = KoneksiDB.getConnection();
@@ -55,7 +55,24 @@ public class DAOMahasiswa implements IMahasiswa
                     System.out.println("Gagal Input");
                 }
             }
-            
+        }
+        
+        public void delete(int id){
+            PreparedStatement statement = null;
+            try{
+                statement = connection.prepareStatement(delete);
+                
+                statement.setInt(1, id);
+                statement.executeUpdate();
+            } catch (SQLException ex){
+                System.out.println("Berhasil Delete");
+            } finally {
+                try{
+                    statement.close();
+                } catch (SQLException ex){
+                    System.out.println("Gagal Update");
+                }
+            }
         }
         
         public List<Mahasiswa> getAll(){
