@@ -16,17 +16,10 @@ import javax.swing.JTextField;
 public class FormMahasiswa extends javax.swing.JFrame
     {
     ControllerMahasiswa cbt;
+    
     /**
      * Creates new form FormMahasiswa
      */
-    
-    public FormMahasiswa() {
-        initComponents();
-        setJk = new javax.swing.JComboBox<>();
-        setJk.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "L", "P" }));
-        cbt = new ControllerMahasiswa(this);
-        cbt.isiTable();
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,7 +39,6 @@ public class FormMahasiswa extends javax.swing.JFrame
         jLabel3 = new javax.swing.JLabel();
         txtNama = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        javax.swing.JComboBox<String> setJk = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         txtAlamat = new javax.swing.JTextField();
         buttonInsert = new javax.swing.JButton();
@@ -58,6 +50,7 @@ public class FormMahasiswa extends javax.swing.JFrame
         buttonCariNama = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelData = new javax.swing.JTable();
+        setJk = new javax.swing.JComboBox<>();
 
         jButton3.setText("Ubah");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -93,13 +86,6 @@ public class FormMahasiswa extends javax.swing.JFrame
         });
 
         jLabel4.setText("Kelamin");
-
-        setJk.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "L", "P" }));
-        setJk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                setJkActionPerformed(evt);
-            }
-        });
 
         jLabel5.setText("Alamat");
 
@@ -159,6 +145,8 @@ public class FormMahasiswa extends javax.swing.JFrame
         ));
         jScrollPane1.setViewportView(tabelData);
 
+        setJk.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "L", "P" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -193,8 +181,8 @@ public class FormMahasiswa extends javax.swing.JFrame
                                         .addComponent(jLabel4))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(setJk, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtNama, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)))))
+                                        .addComponent(txtNama, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                                        .addComponent(setJk, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -266,7 +254,13 @@ public class FormMahasiswa extends javax.swing.JFrame
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    public FormMahasiswa() {
+        initComponents();
+        cbt = new ControllerMahasiswa(this);
+        cbt.isiTable();
+    }
+    
     private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDActionPerformed
@@ -278,10 +272,6 @@ public class FormMahasiswa extends javax.swing.JFrame
     private void txtNamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNamaActionPerformed
-
-    private void setJkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setJkActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_setJkActionPerformed
 
     private void buttonInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInsertActionPerformed
         // TODO add your handling code here:
@@ -332,12 +322,9 @@ public class FormMahasiswa extends javax.swing.JFrame
         return txtNama;
     }
     
-    private javax.swing.JComboBox<String> setJk;
-    
     public JComboBox getTxtJk(){
         return setJk;
     }
-
    
     public JTextField getTxtAlamat(){
         return txtAlamat;
@@ -416,6 +403,7 @@ public class FormMahasiswa extends javax.swing.JFrame
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<String> setJk;
     private javax.swing.JTable tabelData;
     private javax.swing.JTextField txtAlamat;
     private javax.swing.JTextField txtCariNama;
@@ -424,8 +412,5 @@ public class FormMahasiswa extends javax.swing.JFrame
     private javax.swing.JTextField txtNim;
     // End of variables declaration//GEN-END:variables
 
-    public Object getTxtId() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     }

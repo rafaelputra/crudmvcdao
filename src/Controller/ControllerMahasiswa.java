@@ -61,7 +61,7 @@ public class ControllerMahasiswa
                 implMahasiswa.insert(b);
                 JOptionPane.showMessageDialog(null, "Simpan Data sukses");  
             } else {
-                JOptionPane.showMessageDialog(null, "Data Tidak Boleh Kosong");
+                JOptionPane.showMessageDialog(frame, "Data Tidak Boleh Kosong");
             }
         }
         public void delete(){
