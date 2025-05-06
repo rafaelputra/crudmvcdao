@@ -3,6 +3,11 @@ Akses database dari mysql kemudian ketik perintah
 
 `ALTER TABLE tblmahasiswa MODIFY COLUMN id INT NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (id);`
 
+### Hapus Auto Increment pada kolom id
+Akses database dari mysql kemudian ketik perintah
+
+`ALTER TABLE tblmahasiswa MODIFY COLUMN id INT NOT NULL;`
+
 ### Ubah Value pada Kolom Jk
 Akses database dari mysql kemudian ketik perintah
 
