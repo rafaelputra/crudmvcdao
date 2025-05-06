@@ -259,6 +259,14 @@ public class FormMahasiswa extends javax.swing.JFrame
         initComponents();
         cbt = new ControllerMahasiswa(this);
         cbt.isiTable();
+        tabelData.addMouseListener(new java.awt.event.MouseAdapter(){
+            public void mouseClicked(java.awt.event.MouseEvent evt){
+                int row = tabelData.getSelectedRow();
+                if (row >= 0){
+                    cbt.isiField(row);
+                }
+            }
+        });
     }
     
     private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed

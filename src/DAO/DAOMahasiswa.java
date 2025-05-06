@@ -25,7 +25,7 @@ import java.util.logging.Logger;
 public class DAOMahasiswa implements IMahasiswa
     {
         Connection connection;
-        final String insert = "INSERT INTO tblmahasiswa (nim, nama, jk, alamat) VALUES (?, ?, ?, ?);";
+        final String insert = "INSERT INTO tblmahasiswa (id, nim, nama, jk, alamat) VALUES (?, ?, ?, ?, ?);";
         final String select = "SELECT * FROM tblmahasiswa;";
         final String delete = "DELETE FROM tblmahasiswa WHERE id=? ;";
         final String update = "UPDATE tblmahasiswa set nim=?, nama=?, jk=?, alamat=? where id=? ;";
@@ -39,10 +39,11 @@ public class DAOMahasiswa implements IMahasiswa
             PreparedStatement statement = null;
             try{
                 statement = connection.prepareStatement(insert);
-                statement.setString(1, b.getNim());
-                statement.setString(2, b.getNama());
-                statement.setString(3, b.getJk());
-                statement.setString(4, b.getAlamat());
+                statement.setInt(1, b.getId());
+                statement.setString(2, b.getNim());
+                statement.setString(3, b.getNama());
+                statement.setString(4, b.getJk());
+                statement.setString(5, b.getAlamat());
                 statement.executeUpdate();
                 ResultSet rs = statement.getGeneratedKeys();
                 while (rs.next()){

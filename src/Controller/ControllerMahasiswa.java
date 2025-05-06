@@ -54,6 +54,7 @@ public class ControllerMahasiswa
         public void insert(){
             if (!frame.getTxtNim().getText().trim().isEmpty() & !frame.getTxtNama().getText().trim().isEmpty()){
                 Mahasiswa b = new Mahasiswa();
+                b.setId(Integer.parseInt(frame.getTxtID().getText()));
                 b.setNim(frame.getTxtNim().getText());
                 b.setNama(frame.getTxtNama().getText());
                 b.setJk(frame.getTxtJk().getSelectedItem().toString());
