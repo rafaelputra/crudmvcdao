@@ -73,4 +73,34 @@ public class ControllerMahasiswa
                 JOptionPane.showMessageDialog(frame, "Pilih data yang akan dihapus");
             }
         }
+        
+        public void update(){
+            if (!frame.getTxtID().getText().trim().isEmpty()){
+                Mahasiswa b = new Mahasiswa();
+                b.setNim(frame.getTxtNim().getText());
+                b.setNama(frame.getTxtNama().getText());
+                b.setJk(frame.getTxtJk().getSelectedItem().toString());
+                b.setAlamat(frame.getTxtAlamat().getText());
+                b.setId(Integer.parseInt(frame.getTxtID().getText()));
+                implMahasiswa.update(b);
+                JOptionPane.showMessageDialog(null, "Update Data sukses");  
+            } else {
+                JOptionPane.showMessageDialog(frame, "Pilih data yang akan di ubah");
+            }
+        }
+        
+        public void isiTableCariNama(){
+            lb = implMahasiswa.getCariNama(frame.getTxtCariNama().getText());
+            TabelModelMahasiswa tmb = new TabelModelMahasiswa(lb);
+            frame.getTabelData().setModel(tmb);
+        }
+        
+        public void carinama(){
+            if (!frame.getTxtCariNama().getText().trim().isEmpty()){
+                implMahasiswa.getCariNama(frame.getTxtCariNama().getText());
+                isiTableCariNama();
+            } else {          
+                JOptionPane.showMessageDialog(frame, "SILAHKAN PILIH DATA");
+            }
+        }
     }

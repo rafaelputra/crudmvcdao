@@ -281,7 +281,9 @@ public class FormMahasiswa extends javax.swing.JFrame
     }//GEN-LAST:event_buttonInsertActionPerformed
 
     private void buttonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUpdateActionPerformed
-
+        cbt.update();
+        cbt.isiTable();
+        cbt.reset();
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonUpdateActionPerformed
 
@@ -306,7 +308,7 @@ public class FormMahasiswa extends javax.swing.JFrame
     }//GEN-LAST:event_txtCariNamaActionPerformed
 
     private void buttonCariNamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCariNamaActionPerformed
-
+        cbt.carinama();
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonCariNamaActionPerformed
 

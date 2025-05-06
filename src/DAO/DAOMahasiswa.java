@@ -28,6 +28,8 @@ public class DAOMahasiswa implements IMahasiswa
         final String insert = "INSERT INTO tblmahasiswa (nim, nama, jk, alamat) VALUES (?, ?, ?, ?);";
         final String select = "SELECT * FROM tblmahasiswa;";
         final String delete = "DELETE FROM tblmahasiswa WHERE id=? ;";
+        final String update = "UPDATE tblmahasiswa set nim=?, nama=?, jk=?, alamat=? where id=? ;";
+        final String carinama = "SELECT * FROM tblmahasiswa where nama like ?";
         
         public DAOMahasiswa(){
             connection = KoneksiDB.getConnection();
@@ -57,6 +59,27 @@ public class DAOMahasiswa implements IMahasiswa
             }
         }
         
+        public void update(Mahasiswa b){
+            PreparedStatement statement = null;
+            try {
+                statement = connection.prepareStatement(update);
+                statement.setString(1, b.getNim());
+                statement.setString(2, b.getNama());
+                statement.setString(3, b.getJk());
+                statement.setString(4, b.getAlamat());
+                statement.setInt(5, b.getId());
+                statement.executeUpdate();
+            } catch (SQLException ex){
+                System.out.println("Berhasil update");
+            } finally{
+                try{
+                    statement.close();
+                } catch (SQLException ex){
+                    System.out.println("Gagal input");
+                }
+            }
+        }
+                
         public void delete(int id){
             PreparedStatement statement = null;
             try{
@@ -81,6 +104,28 @@ public class DAOMahasiswa implements IMahasiswa
                 lb = new ArrayList<Mahasiswa>();
                 Statement st = connection.createStatement();
                 ResultSet rs = st.executeQuery(select);
+                while (rs.next()){
+                    Mahasiswa b = new Mahasiswa();
+                    b.setId(rs.getInt("id"));
+                    b.setNim(rs.getString("nim"));
+                    b.setNama(rs.getString("nama"));
+                    b.setJk(rs.getString("jk"));
+                    b.setAlamat(rs.getString("alamat"));
+                    lb.add(b);
+                }
+            } catch (SQLException ex){
+                Logger.getLogger(DAOMahasiswa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return lb;
+        }
+        
+        public List<Mahasiswa> getCariNama(String nama){
+            List<Mahasiswa> lb = null;
+            try{
+                lb = new ArrayList<Mahasiswa>();
+                PreparedStatement st = connection.prepareStatement(carinama);
+                st.setString(1, "%" + nama + "%");
+                ResultSet rs = st.executeQuery();
                 while (rs.next()){
                     Mahasiswa b = new Mahasiswa();
                     b.setId(rs.getInt("id"));
